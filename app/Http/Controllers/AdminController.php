@@ -10,6 +10,8 @@ class AdminController extends Controller
     public function index()
     {
         $orders = Order::orderBy("status")->get();
+//        dump(env("GROUP_COURSE")); НЕЛЬЗЯ
+        dump(config("group.name", ""));
         return view("admin", compact("orders"));
     }
 

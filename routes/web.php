@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Middleware\Admin;
 use App\Http\Middleware\NotAdmin;
+use App\Models\Test;
 use Illuminate\Support\Facades\Route;
 
 //Route::get('/', function () {
@@ -50,5 +51,25 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+
+Route::get('/test', function () {
+//    $tests = Test::all();
+//    $tests = Test::where("user_id", 3)->get();
+//    dd($tests[0]->test_attr);
+//    $test = Test::create([
+//        "title" => "test",
+//        "user_id" => 3,
+//    ]);
+
+    $test = Test::with(["user"])->first();
+//    dd($test);
+//    $user = \App\Models\User::where("id", $test->user_id)->first();
+//    dump($user);
+//    dump($test->user);
+
+//    $user = \App\Models\User::find(3);
+
+    dd($test);
+});
 
 
